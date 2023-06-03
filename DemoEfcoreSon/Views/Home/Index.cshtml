@@ -1,0 +1,31 @@
+﻿@model List<DemoEfcoreSon.Models.Shop>
+
+<a class="btn btn-success" asp-controller="Home" asp-action="Create">Create</a>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">ShopName</th>
+        <th scope="col">Address</th>
+        <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    @{
+        var i = 1;
+    }
+    @foreach (var shop in Model)
+    {
+        <tr>
+            <th scope="row">@i</th>
+            <td>@shop.ShopName</td>
+            <td>@shop.Address</td>
+            <td>
+                <a class="btn btn-warning" asp-controller="Home" asp-action="Update" asp-route-id="@shop.Id">Update</a>
+                <a onClick="confirm('Do you want to delete')" class="btn btn-danger" asp-controller="Home" asp-action="Delete" asp-route-shopId="@shop.Id">Delete</a>
+            </td>
+        </tr>
+        i++;
+    }
+    </tbody>
+</table>
